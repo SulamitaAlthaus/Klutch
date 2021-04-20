@@ -1,0 +1,16 @@
+{
+    "_id": {
+        "$oid": "607e16d91a7882f1a0b9d26e"
+    },
+    "clientId": "607e16761a7882f1a0b9d26d",
+    "installmentInterest": 20.5,
+    "installmentInterestValue": 20.5,
+    "comission": 5.5,
+    "comissionValue": 122.21,
+    "installmentValue": 1338.76,
+    "cardNumber": "4012001037141112",
+    "desiredValue": 2222,
+    "totalLoan": 2677.51,
+    "installmentId": 4,
+    "rateTableId": "607e16761a7882f1a0b9d26d"
+}
