@@ -1,34 +1,11 @@
 import styled from 'styled-components';
-import plus from '../../assets/plus.svg';
-import files from '../../assets/files.svg';
 
 export const Container = styled.div`
     width: 100%;
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     color: #228A95;
-`
-
-export const Header = styled.div`
-    width: 30%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 15%;
-    margin-top: 45px;
-`
-export const Plus = styled.img.attrs({ src: `${plus}` })`
-    height: 50%;
-`
-export const Files = styled.img.attrs({ src: `${files}` })`
-    height: 80%;
-`
-export const TextHeader = styled.div`
-    width: 60%;
-    font-size: 40px;
-    font-weight: 700;
-    
+    display: grid;
 `
 
 export const Content = styled.div`
@@ -39,26 +16,37 @@ export const Content = styled.div`
     padding: 30px;
     margin: auto;
 
-`
 
+`
 export const TextContent = styled.div`
     width: 100%;
     font-size: 30px;
     text-align: center;
     font-weight: 600;
+
 `
 
-export const Input = styled.input`
-    width: 65%;
-    height: 50px;
-    border: none;
-    border-radius: 5px;
-    background-color: #F8F8F8;
-    margin: 20px;
-    outline: none;
-    font-size: 25px;
-    text-align: center;
-    color: #777777;
+export const Input = styled.div`
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    .inputMoney{
+        width: 70%;
+        outline: none;
+        border: none;
+        height: 50px;
+        text-align: center;
+        border-radius: 5px;
+        background-color: #F8F8F8;
+        font-size: 25px;
+        color: #777777;
+        
+        :hover, :focus {
+            box-shadow: 0 0 5px #777777;
+        }
+    }
 
 `
 
@@ -71,4 +59,24 @@ export const Button = styled.button`
     color: #FFFFFF;
     background-color: #EF9C4B;
     font-weight: 600;
+    outline: none;
+    cursor: pointer;
+
+    :hover{
+        box-shadow: 0 0 5px #EF9C4B;
+    }
 `
+export const MessageErr = styled.div`
+    width: 100%;
+    text-align: center;
+    
+    span{
+        width: 100%;
+        color: #FF0000;
+    }
+`
+export const StandardTable = styled.div`
+    display: grid;
+    align-items: center;
+`
+
