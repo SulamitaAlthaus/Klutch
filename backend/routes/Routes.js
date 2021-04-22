@@ -10,7 +10,7 @@ router.get('/show', TableController.show);
 
 
 router.post('/newuser', ClientController.create);
-router.get('/showuser', ClientController.show);
+router.get('/showuser/:cpf', ClientController.show);
 
 
 router.post('/newsolicitation', SolicitationController.create);

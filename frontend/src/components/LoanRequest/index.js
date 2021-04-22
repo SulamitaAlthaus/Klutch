@@ -1,12 +1,12 @@
 import React from 'react';
 import * as S from './styles';
 
-function LoanRequest() {
+function LoanRequest({ title }) {
     return (
         <S.Container>
             <S.Plus />
             <S.Files />
-            <S.Text>Simulação de Taxas</S.Text>
+            <S.Text>{title}</S.Text>
         </S.Container>
     )
 }

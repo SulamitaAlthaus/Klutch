@@ -9,7 +9,7 @@ export const Container = styled.div`
 `
 export const Content = styled.div`
     width: 25%;
-    margin: 20px auto;
+    margin: 10px auto;
     display: grid;
 `
 export const Title = styled.div`
@@ -30,6 +30,10 @@ export const Input = styled.div`
         color: #777777;
         font-size: 1.3rem;
         border-radius: 5px 0 0 5px;
+
+        ::placeholder{
+            font-size: 1.1rem;
+        }
     }
 `
 export const Search = styled.button`
@@ -76,4 +80,12 @@ export const Button = styled.button`
     font-size: 1.5rem;
     font-weight: 600;
     padding: 10px;
+`
+export const MessageErr = styled.div`
+    background-color: #F8F8F8;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    font-size: 1.2rem;
+    color: #777777;
 `

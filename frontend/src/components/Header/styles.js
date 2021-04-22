@@ -11,12 +11,12 @@ export const Container = styled.div`
 `
 
 export const Menu = styled.img.attrs({ src: `${menu}` })`
-    width: 10%;
+    margin-left: 1%;
     height: 25px;
 
 `
 export const Logo = styled.img.attrs({ src: `${logo}` })`
-    width: 80%;
+    width: 90%;
     height: 65%;
     display: flex;
 `

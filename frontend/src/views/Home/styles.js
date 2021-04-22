@@ -79,4 +79,3 @@ export const StandardTable = styled.div`
     display: grid;
     align-items: center;
 `
-
