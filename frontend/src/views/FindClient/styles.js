@@ -59,6 +59,11 @@ export const Client = styled.div`
     font-size: 1.2rem;
     display: grid;
 
+    .link{
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+
 `
 export const Text = styled.div`
     color: #777777;

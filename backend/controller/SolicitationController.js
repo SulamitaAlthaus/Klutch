@@ -1,9 +1,9 @@
-const SolicitationModel = require('../model/client')
+const SolicitationModel = require('../model/solicitation')
 
 class SolicitationController {
 
     async create(req, res) {
-        const solicitation = new SolicitationModel();
+        const solicitation = new SolicitationModel(req.body);
         await solicitation.save()
          .then(response => {
           return res.status(200).json(response);
@@ -14,7 +14,7 @@ class SolicitationController {
        }
 
     async show(req, res) {
-     await SolicitationModel.find({})
+     await SolicitationModel.findOne({ 'clientId': { '$in': req.params.clientId } } )
       .then(response => {
        return res.status(200).json(response);
       })

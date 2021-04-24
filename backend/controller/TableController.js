@@ -3,7 +3,7 @@ const TableModel = require('../model/rateTable')
 class TableController {
 
     async create(req, res) {
-        const table = new TableModel();
+        const table = new TableModel(req.body);
         await table.save()
          .then(response => {
           return res.status(200).json(response);
@@ -22,6 +22,17 @@ class TableController {
        return res.status(500).json(error);
       });
     }
+
+    
+    async showOne(req, res) {
+      await TableModel.findOne({ 'id': { '$in': req.params.id } } )
+       .then(response => {
+        return res.status(200).json(response);
+       })
+       .catch(error => {
+        return res.status(500).json(error);
+       });
+     }
 
 }
 

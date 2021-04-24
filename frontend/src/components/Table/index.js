@@ -1,16 +1,19 @@
 import React from 'react';
 import * as S from './styles';
-import Rows from './rows'
+import Rows from './rows';
+import { useSelector } from 'react-redux';
 
-function Table({tables,value}) {
-
+function Table({tables, value, id}) {
+    const user = useSelector(state => state.data[0])
+    
     return (
         <S.Container>
-            {tables.map((item) =>
-                <S.Table key={item.id}>
-                    <S.Checkbox for={item.name}>
-                        <S.Option type="radio" name="checkboxOption" id={item.name} />
-                    </S.Checkbox>
+            {tables.map((table) =>
+                <S.Table key={table.id}>
+                    {!id ? <S.Checkbox for={table.name}>
+                        <S.Option type="radio" name="checkboxOption" id={table.name} 
+                        checked={user.idTable==table.id ? true : false}/>
+                    </S.Checkbox> : null}
                     <S.HeaderTable>
                         <S.Title>Tabela Padrão</S.Title>
                         <S.Colums>
@@ -20,7 +23,7 @@ function Table({tables,value}) {
                             <S.Colum>Valor Total</S.Colum>
                             <S.Colum>Comissão Parceiro</S.Colum>
                         </S.Colums>
-                        <Rows installments={item.installments} value={value}/>
+                        <Rows installments={table.installments} value={value} idTable={table.id}/>
                     </S.HeaderTable>
                 </S.Table>)}
         </S.Container>

@@ -1,22 +1,27 @@
 import { createStore } from 'redux';
 
 const INITIAL_STATE = {
-    data: [],
-    user: [{
-        name: "",
-        id: ""
-    }]
+    data: [{
+        idTable: 0
+    }],
+    user: [],
+    card: []
+
 };
 
-function dataLoan(state = INITIAL_STATE, action){
+function reducer(state = INITIAL_STATE, action){
     switch (action.type) {
         case 'ADD_DATA':
-            return {data: [action.installment], user: [action.save]};
+            return {...state, data: [action.installment]};
+        case 'ADD_USER':
+            return {...state, user: [action.save]};
+        case 'ADD_CARD':
+            return {...state, card: [action.saveCard]};
         default:
             return state;
     }
 }
 
-const store = createStore(dataLoan);
+const store = createStore(reducer);
 
 export default store; 

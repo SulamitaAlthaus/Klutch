@@ -64,10 +64,10 @@ export const Input = styled.input`
     border-radius: 5px 0 0 5px;
     margin: 5px;
     font-weight: 700;
+    font-style: italic;
 
     ::placeholder{
         font-size: 1.1rem;
-        font-style: italic;
     }
 `
 
@@ -88,5 +88,38 @@ export const Button = styled.button`
     font-size: 1.5rem;
     font-weight: 600;
     padding: 10px;
-    margin: 5% 25%;
+    margin: 5% 25% 0 5%;
+
+    .link{
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+`
+export const Choice = styled.div`
+    display: grid;
+    justify-content: center;
+
+    .text{
+        text-align: center;
+        font-size: 1.3rem;
+    }
+    .button{
+        margin: 0 5px;
+            
+        :disabled{
+            opacity: 0.5;
+            cursor: auto;
+        }
+    }
+    .span{
+        margin: 10px;
+        color: #777777;
+        font-size: 1.3rem;
+        text-align: center;
+    }
+    .textfooter{
+        color: #777777;
+        font-size: 1rem;
+        text-align: right;
+    }
 `

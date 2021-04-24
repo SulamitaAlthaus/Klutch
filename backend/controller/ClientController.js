@@ -3,7 +3,7 @@ const ClientModel = require('../model/client')
 class ClientController {
 
     async create(req, res) {
-        const client = new ClientModel();
+        const client = new ClientModel(req.body);
         await client.save()
          .then(response => {
           return res.status(200).json(response);

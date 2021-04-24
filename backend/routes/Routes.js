@@ -7,6 +7,7 @@ const SolicitationController = require('../controller/SolicitationController')
 
 router.post('/', TableController.create);
 router.get('/show', TableController.show);
+router.get('/show/:id', TableController.show);
 
 
 router.post('/newuser', ClientController.create);
@@ -14,6 +15,6 @@ router.get('/showuser/:cpf', ClientController.show);
 
 
 router.post('/newsolicitation', SolicitationController.create);
-router.get('/showsolicitation', SolicitationController.show);
+router.get('/showsolicitation/:clientId', SolicitationController.show);
 
 module.exports = router;

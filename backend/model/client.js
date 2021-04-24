@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 
 const ClientSchema = new Schema({
+    id: { type: Number, required: true },
     name: { type: String, required: true },
     phone: { type: String, required: true },
     cpf: { type: String, required: true },
@@ -14,4 +15,4 @@ const ClientSchema = new Schema({
 
 });
 
-module.exports = mongoose.model('client', ClientSchema);
+module.exports = mongoose.model('Client', ClientSchema);

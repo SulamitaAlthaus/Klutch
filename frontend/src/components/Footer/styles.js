@@ -12,24 +12,30 @@ export const Container = styled.div`
     color: #FFFFFF;
     font-weight: 600;
 
+    .link{
+        width: 8%;
+        height: 60%;
+    }
+
 `
 
 export const Button = styled.button`
-    width: 8%;
-    height: 60%;
+    width: 100%;
+    height: 100%;
     margin: 0 10px;
     border: none;
     border-radius: 5px;
     font-size: 15px;
-    color: #FFFFFF;
     background-color: #EF9C4B;
     font-weight: 600;
     outline: none;
+    color: #FFFFFF;
     cursor: pointer;
 
     :hover{
         box-shadow: 0 0 5px #EF9C4B;
     }
+
 `
 
 export const Text = styled.div`

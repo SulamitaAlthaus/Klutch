@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import * as S from './styles';
 import Cpf from "react-input-mask";
-import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 //components
-import Header from '../../components/Header'
-import LoanRequest from '../../components/LoanRequest'
+import Header from '../../components/Header';
+import LoanRequest from '../../components/LoanRequest';
+import { useDispatch } from 'react-redux';
 
-import api from '../../services/api'
+import api from '../../services/api';
 
 function FindClient() {
-  const [cpf, setCpf] = useState("");
+  const [cpf, setCpf] = useState("999.999.999-99");
   const [user, setUser] = useState();
   const [messageErr, setMessageErr] = useState();
   const dispatch = useDispatch();
+
 
   async function loadClient(cpf) {
     if (cpf == '' || cpf.includes("_")) {
@@ -23,17 +25,16 @@ function FindClient() {
         .then(response => {
           setUser(response.data)
           setMessageErr("")
-          if(response.data == null){
+          dispatch({ type: 'ADD_USER', 
+          save: {userId: response.data.id, userName: response.data.name}})
+      
+          if (response.data == null) {
             setMessageErr("Cliente não encontrado")
           }
         }).catch(err => {
           console.log(err)
         })
     }
-  }
-
-  async function redirect(name, id){
-    dispatch({ type: 'ADD_DATA', save: {name: "name", id: "id"}})
   }
 
 
@@ -53,7 +54,7 @@ function FindClient() {
             <S.Text>Cliente encontrado</S.Text>
             <S.Cpf>{user.cpf}</S.Cpf>
             <S.Name>{user.name}</S.Name>
-            <S.Button onClick={e => redirect(user.name,user._id)}>Solicitar</S.Button>
+            <Link to="/cartao"><S.Button>Solicitar</S.Button></Link>
           </S.Client>
         </> : null}
         {messageErr ? <S.MessageErr>{messageErr}</S.MessageErr> : null}
