@@ -16,7 +16,8 @@
 #### Passos para solicitação do Empréstimo
     - Na primeira tela, preencha o valor desejado, deve ser entre R$300 e R$10.000, e clique em Calcular.
     - Selecione a quantidade de parcelas que deseja, basta clicar na linha, a tabela correspondente é selecionada automaticamente, confira os valores no rodapé, e clique em Avançar.
-    - Preencha o CPF, os valores disponíveis são "999.999.999-99" e "222.222.222-99", qualquer valor diferente desse, emitirá uma mensagem informando que o CPF não foi encontrado. Após aparecer as informações do cliente, clique em Solicitar.
+    - Preencha o CPF, os valores disponíveis são "999.999.999-99" e "222.222.222-99", qualquer valor diferente desse, emitirá uma mensagem informando que o CPF não foi encontrado. 
+    Após aparecer as informações do cliente, clique em Solicitar.
     - Por padrão ele preenche o nome no cartão com o nome do cliente, porém se não for igual está no seu cartão, você pode alterar. Depois preencha o número do cartão, para testes você pode utilizar 5555555551234(Mastercard) ou 4444444441234(Visa), preencha a data de validade no formato mes/ano e os três números do CVC. Após preencher os dados do cartão, clique em Continuar. O upload das imagens ainda não está disponível.
     - Escolha a modalidade. A opção Crédito Consignado ainda não está disponível.
     - Verifique se os dados da solicitação estão corretos. Caso você deseje, pode alterar o valor desejado, lembrando que deve ser entre R$300 e R$10.000, e também alterar a quantidade de parcelas no campo "Parcelas" ou clicando na parcela desejada na tabela. Escolha o tipo de contrato, e clique em Concluir.
