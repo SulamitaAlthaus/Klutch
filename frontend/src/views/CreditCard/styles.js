@@ -4,6 +4,7 @@ export const Container = styled.div`
     width: 100%;
     height: 50px;
     display: grid;
+
 `
 
 export const Content = styled.div`
@@ -75,6 +76,13 @@ export const Text = styled.div`
     margin: 5px 5px 20px 5px;
     text-align: left;
 `
+export const MsgErr = styled.div`
+    display: flex;
+    color: red;
+    height: 30px;
+    width: 100%;
+    justify-content: center;
+`
 
 export const Button = styled.button`
     width: 250px;
@@ -88,7 +96,7 @@ export const Button = styled.button`
     font-size: 1.5rem;
     font-weight: 600;
     padding: 10px;
-    margin: 5% 25% 0 5%;
+    margin: 0 25%;
 
     .link{
         text-decoration: none;

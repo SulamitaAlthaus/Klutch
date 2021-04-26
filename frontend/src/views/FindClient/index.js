@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import api from '../../services/api';
 
 function FindClient() {
-  const [cpf, setCpf] = useState("999.999.999-99");
+  const [cpf, setCpf] = useState("");
   const [user, setUser] = useState();
   const [messageErr, setMessageErr] = useState();
   const dispatch = useDispatch();
@@ -26,7 +26,8 @@ function FindClient() {
           setUser(response.data)
           setMessageErr("")
           dispatch({ type: 'ADD_USER', 
-          save: {userId: response.data.id, userName: response.data.name}})
+          save: {userId: response.data.id, userName: response.data.name, 
+            userPhone: response.data.phone, userCPF: response.data.cpf}})
       
           if (response.data == null) {
             setMessageErr("Cliente não encontrado")

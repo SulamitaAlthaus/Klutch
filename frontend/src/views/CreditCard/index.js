@@ -14,10 +14,13 @@ import LoanRequest from '../../components/LoanRequest'
 function CreditCard() {
     const [imageCard, setImageCard] = useState(Nocard);
     const [card, setCard] = useState(false);
-    const [cardNumber, setCardNumber] = useState(false);
+    const [company, setCompany] = useState("No Card");
+    const [cardNumber, setCardNumber] = useState("");
+    const [dateValue, setDateValue] = useState("");
+    const [cvc, setCvc] = useState("");
+    const [messageErr, setMessageErr] = useState(false);
     const user = useSelector(state => state.user[0]);
     const dispatch = useDispatch();
-
 
     var cards = {
         Visa: /^4[0-9]{6}/,
@@ -30,19 +33,25 @@ function CreditCard() {
             if (number.match(cards[card])) {
                 if (card === "Mastercard") {
                     setImageCard(Mastercard)
+                    setCompany("Mastercard")
                 } else if (card === "Visa") {
                     setImageCard(Visa)
+                    setCompany("Visa")
                 }
             };
 
     }
 
     function saveData() {
-        dispatch({
-            type: 'ADD_CARD',
-            saveCard: { cardNumber: cardNumber }
-        })
-        setCard(true)
+        if (cardNumber === "" || dateValue === "" || cvc === "") {
+            setMessageErr(true)
+        } else {
+            dispatch({
+                type: 'ADD_CARD',
+                saveCard: { cardNumber: cardNumber, dateValue: dateValue, cvc: cvc, company: company }
+            })
+            setCard(true)
+        }
     }
 
 
@@ -60,8 +69,8 @@ function CreditCard() {
                                 <S.Input onChange={e => FindCard(e.target.value, cards)} className="number" placeholder="000000000000" />
                                 <S.Image><img src={imageCard} /></S.Image>
                             </S.NumberCard>
-                            <S.Input placeholder="Data de Validade" />
-                            <S.Input placeholder="CVC" />
+                            <S.Input placeholder="Data de Validade" onChange={e => setDateValue(e.target.value)} />
+                            <S.Input placeholder="CVC" onChange={e => setCvc(e.target.value)} />
                         </S.Left>
                         <S.Right>
                             <S.Title>Faça upload dos anexos do cartão</S.Title>
@@ -71,6 +80,7 @@ function CreditCard() {
                             <S.Text>Atenção: As fotos devem estar legíveis,
                         com todas as informações visíveis do cartão.</S.Text>
                         </S.Right>
+                        {messageErr ? <S.MsgErr>Preencha todos os campos</S.MsgErr> : null}
                         <S.Button onClick={saveData}>Continuar</S.Button>
                     </> :
                     <S.Choice>

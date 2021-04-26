@@ -3,7 +3,7 @@ import plus from '../../assets/plus.svg';
 import files from '../../assets/files.svg';
 
 export const Container = styled.div`
-    width: 35%;
+    width: 380px;
     height: 80%;
     font-family: Arial, Helvetica, sans-serif;
     color: #228A95;
@@ -23,7 +23,7 @@ export const Files = styled.img.attrs({ src: `${files}` })`
     height: 65%;
 `
 export const Text = styled.div`
-    width: 60%;
+    width: 220px;
     font-size: 40px;
     font-weight: 700;
 

@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import check from '../../assets/checkmark.svg';
+
 
 export const Container = styled.div`
     width: 100%;
@@ -20,78 +22,44 @@ export const Top = styled.label`
     padding: 0 10%;
     
 `
+
 export const Content = styled.div`
     width: 65%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    justify-content: space-between;
-    align-items: center;
-    justify-items: center;
+    height: 200px;
     margin-top: 10%;
 
-    .table{
-        position: absolute;
-        width: 25%;
-        height: 10%;
-        text-align: right;
-        right: 0;
-        top: 0;
-        margin: 7% 20% 0 0;
-    }
 `
-export const Label = styled.label`
-    width: 85%;
-    height: 70px;
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 20px;
-    background-color: #F8F8F8;
-    font-style: italic;
-    border-radius: 5px;
-    cursor: pointer;
 
-    :hover {
-        background-color: #E8FFE3;
-    }
-
-    
-
-`
-export const Input = styled.input`
-    width: 40%;
-    height: 70%;
-    margin: 0 10px 0 5px;
-    background-color: #FFFFFF;
-    border: none;
-    color: #EF9C4B;
-    font-weight: 600;
-    font-style: italic;
-    border-radius: 5px;
-    padding: 0 10px;
-    outline: none;
-`
 export const Text = styled.div`
     width: 60%;
     text-align: left;
 `
 export const Buttons = styled.div`
-    width: 65%;
+    width: 62%;
     height: 70px;
     display: flex;
     justify-content: center;
 
-    .contract{
-        width: 25%;
-    :hover{
-        background-color: #FFFFFF;
-        color: #228A95;
-
+    .link{
+        width: 80%;
+        text-decoration: none;
+        button{ 
+            width: 100%;
     }}
     
+    .contract{
+        width: 25%;
+
+        :hover{
+            background-color: #FFFFFF;
+            color: #228A95;
+        }
+    }
 `
 export const Button = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 45%;
     height: 100%;
     background-color: #228A95;
@@ -104,6 +72,51 @@ export const Button = styled.button`
     font-weight: 600;
     padding: 10px;
     margin-top: 10px;
+`
+export const Conclude = styled.img.attrs({ src: `${check}` })`
+    width: 20%;
+    height: 65%;
+    display: flex;
+`
+export const Table = styled.div`
+    width: 63%;
+    display: flex;
+    justify-content: center;
+    margin-top: 4%;
+`
+export const HeaderTable = styled.div`
+    width: 97%;
+    background-color: #F8F8F8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+`
+export const Title = styled.div`
+    margin: 10px 0 25px 0;
+    font-size: 1.2rem;
+    font-weight:750;
+`
+export const Colums = styled.div`
+    display: flex;
+    width: 100%;
+    flex-direction: row;
 
-
+    #row1{
+        :hover{
+            background-color: red;
+        }
+    }
+`
+export const Colum = styled.div`
+    width: 100%;
+    color: #777777;
+    border: 1px solid #E2E2E2;
+    font-size: 1rem;
+    text-align: center;
+    align-self: center;
+    padding: 15px 0;
+`
+export const MsgErr = styled.div`
+    color: red;
 `

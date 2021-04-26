@@ -1,19 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from './styles';
 import Rows from './rows';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch  } from 'react-redux';
 
-function Table({tables, value, id}) {
+import api from '../../services/api'
+
+function Table({tables, value}) {
+    const dispatch = useDispatch();
     const user = useSelector(state => state.data[0])
     
+
+  async function loadingTables() {
+    await api.get(`/show/${user.idTable}`)
+      .then(response => {
+        dispatch({ type: 'ADD_TABLE', 
+        saveTable: {table: response.data.installments}})
+      })
+  }
+
+  useEffect(() => {
+    loadingTables();
+  }, [])
+
     return (
         <S.Container>
             {tables.map((table) =>
                 <S.Table key={table.id}>
-                    {!id ? <S.Checkbox for={table.name}>
+                    <S.Checkbox for={table.name}>
                         <S.Option type="radio" name="checkboxOption" id={table.name} 
                         checked={user.idTable==table.id ? true : false}/>
-                    </S.Checkbox> : null}
+                    </S.Checkbox>
                     <S.HeaderTable>
                         <S.Title>Tabela Padrão</S.Title>
                         <S.Colums>
@@ -23,7 +39,7 @@ function Table({tables, value, id}) {
                             <S.Colum>Valor Total</S.Colum>
                             <S.Colum>Comissão Parceiro</S.Colum>
                         </S.Colums>
-                        <Rows installments={table.installments} value={value} idTable={table.id}/>
+                        <Rows installments={table.installments} value={value} idTable={table.id} tableName={table.name}/>
                     </S.HeaderTable>
                 </S.Table>)}
         </S.Container>

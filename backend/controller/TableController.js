@@ -25,7 +25,7 @@ class TableController {
 
     
     async showOne(req, res) {
-      await TableModel.findOne({ 'id': { '$in': req.params.id } } )
+      await TableModel.findOne({ 'id' : { '$in': req.params.id } })
        .then(response => {
         return res.status(200).json(response);
        })

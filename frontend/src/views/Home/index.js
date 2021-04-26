@@ -13,7 +13,7 @@ import api from '../../services/api';
 
 function Home() {
   const [visible, setVisible] = useState(false)
-  const [value, setValue] = useState("R$500")
+  const [value, setValue] = useState("")
   const [valueLoan, setValueLoan] = useState()
   const [messageErr, setMessageErr] = useState()
   const [tables, setTables] = useState([])
@@ -49,6 +49,7 @@ function Home() {
   useEffect(() => {
     loadingTables();
   }, [])
+  
   return (
       <S.Container>
         <Header />

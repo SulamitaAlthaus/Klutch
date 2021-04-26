@@ -7,7 +7,7 @@ const SolicitationController = require('../controller/SolicitationController')
 
 router.post('/', TableController.create);
 router.get('/show', TableController.show);
-router.get('/show/:id', TableController.show);
+router.get('/show/:id', TableController.showOne);
 
 
 router.post('/newuser', ClientController.create);

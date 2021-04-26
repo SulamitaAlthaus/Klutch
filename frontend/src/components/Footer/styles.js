@@ -12,16 +12,12 @@ export const Container = styled.div`
     color: #FFFFFF;
     font-weight: 600;
 
-    .link{
-        width: 8%;
-        height: 60%;
-    }
 
 `
 
 export const Button = styled.button`
-    width: 100%;
-    height: 100%;
+    width: 8%;
+    height: 60%;
     margin: 0 10px;
     border: none;
     border-radius: 5px;

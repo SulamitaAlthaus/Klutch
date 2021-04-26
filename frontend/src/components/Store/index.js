@@ -2,10 +2,12 @@ import { createStore } from 'redux';
 
 const INITIAL_STATE = {
     data: [{
-        idTable: 0
+        idTable: 1,
+        filter: ""
     }],
     user: [],
-    card: []
+    card: [],
+    table: [""]
 
 };
 
@@ -17,6 +19,10 @@ function reducer(state = INITIAL_STATE, action){
             return {...state, user: [action.save]};
         case 'ADD_CARD':
             return {...state, card: [action.saveCard]};
+        case 'ADD_TABLE':
+            return {...state, table: [action.saveTable]};
+        case 'ADD_CONTRACT':
+            return {...state, contract: [action.saveTypeContract]};
         default:
             return state;
     }

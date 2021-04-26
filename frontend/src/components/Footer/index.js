@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './styles';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 function Footer() {
-    const user = useSelector(state => state.data[0])
+    const data = useSelector(state => state.data[0])
+    const [redirect, setRedirect] = useState(false)
+
+    function redirectPage(){
+        if(data.filter===""){
+            return
+        } else {
+            setRedirect(true)
+        }
+    }
 
 
 
     return (
         <S.Container>
+        {redirect ? <Redirect to="/cliente" /> : null}
             <S.Text>Nome: Tabela Padrão</S.Text>
-            <S.Text>Parcelas: {user ? user.installment : null}</S.Text>
-            <S.Text>Valor da Parcela: R${user ? user.installmentsValue : null}</S.Text>
-            <Link to="/cliente" className="link"><S.Button>Avançar</S.Button></Link>
+            <S.Text>Parcelas: {data ? data.installment : null}</S.Text>
+            <S.Text>Valor da Parcela: R${data ? data.installmentsValue : null}</S.Text>
+            <S.Button onClick={redirectPage}>Avançar</S.Button>
         </S.Container>
     )
 }

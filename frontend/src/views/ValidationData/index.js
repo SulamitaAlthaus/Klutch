@@ -1,51 +1,90 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as S from './styles';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import api from '../../services/api'
+
 
 //componentes
 import Header from '../../components/Header'
 import LoanRequest from '../../components/LoanRequest'
-import Table from '../../components/Table'
+import Rows from '../../components/Table/rows'
+import DataReview from '../../components/DataReview'
 
 function ValidationData() {
-  const [tables, setTables] = useState([])
-  const data = useSelector(state => state.data[0]);
+  const dispatch = useDispatch();
+  const [redirect, setRedirect] = useState(false);
+  const [filter, setFilter] = useState(false);
+  const [messageErr, setMessageErr] = useState(false);
+  const table = useSelector(state => state.data[0]);
+  const data = useSelector(state => state);
+  let comissionValue = ((data.data[0].totalLoan / data.data[0].installment) * (data.data[0].comission / 100) * data.data[0].installment).toFixed(2);
 
-  async function loadingTables() {
-    await api.get(`/show`)
-      .then(response => {
-        setTables(response.data)
+
+  async function saveData() {
+    if (!filter) {
+      setMessageErr(true)
+    } else {
+      await api.post(`/newsolicitation`, {
+        clientId: data.user[0].userId,
+        installmentInterestValue: data.data[0].installmentInterestValue,
+        comission: data.data[0].comission,
+        comissionValue: comissionValue,
+        cardNumber: data.card[0].cardNumber,
+        desiredValue: data.data[0].desiredValue,
+        totalLoan: data.data[0].totalLoan,
+        installmentId: data.data[0].installment,
+        installmentInterest: data.data[0].installment,
+        rateTableId: data.data[0].idTable
+      }).then(() => {
+        setRedirect(true)
+      }).catch((err) => {
+        console.log(err)
       })
+    }
   }
 
-  useEffect(() => {
-    loadingTables();
-    console.log(tables);
-  }, [])
+  function saveTypeContract(value) {
+    setMessageErr(false)
+    setFilter(true)
+    dispatch({
+      type: 'ADD_CONTRACT',
+      saveTypeContract: { tipeContract: value }
+    })
+  }
+
 
   return (
     <S.Container>
+      {redirect ? <Redirect to="/solicitacao" /> : null}
       <Header />
       <S.Top>
         <LoanRequest className="loanRequest" title={"Solicitar Empréstimo"} />
       </S.Top>
       <S.Content>
-        <S.Label className="table">Tabela<S.Input className="inputTable" /></S.Label>
-        <S.Label>Valor desejado:<S.Input defaultValue={"R$ " + data.desiredValue} /></S.Label>
-        <S.Label>Valor Total do Empréstimo:<S.Input value={"R$ " + data.totalLoan} disabled /></S.Label>
-        <S.Label>Parcelas:<S.Input defaultValue={data.installment} /></S.Label>
-        <S.Label>Valor da parcela:<S.Input value={"R$ " + data.installmentsValue} disabled /></S.Label>
+        <DataReview />
       </S.Content>
-      <S.Text>Escolha o tipo de Contrato:</S.Text>
+      <S.Text>Escolha o tipo de Contrato:</S.Text>{messageErr ? <S.MsgErr>Escolha o tipo de contrato</S.MsgErr> : null}
       <S.Buttons>
-        <S.Button className="contract">Automático</S.Button>
-        <S.Button className="contract">Manual</S.Button>
-        <S.Button>Concluir</S.Button>
+        <S.Button className="contract" onClick={e => saveTypeContract("Automático")}>Automático</S.Button>
+        <S.Button className="contract" onClick={e => saveTypeContract("Manual")}>Manual</S.Button>
+        <S.Button onClick={saveData}><S.Conclude />Concluir</S.Button>
       </S.Buttons>
-      {/* <Table id={data.idTable} tables={tables} value={data.desiredValue}/> */}
-    </S.Container>
+      <S.Table>
+        <S.HeaderTable>
+          <S.Title>Tabela Padrão</S.Title>
+          <S.Colums>
+            <S.Colum>Parcela</S.Colum>
+            <S.Colum>Juros da Parcela</S.Colum>
+            <S.Colum>Valor da Parcela</S.Colum>
+            <S.Colum>Valor Total</S.Colum>
+            <S.Colum>Comissão Parceiro</S.Colum>
+          </S.Colums>
+          <Rows value={table.desiredValue} idTable={table.idTable} tableName={table.tableName} />
+        </S.HeaderTable>
+      </S.Table>
+    </S.Container >
   )
 }
 

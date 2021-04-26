@@ -10,6 +10,8 @@ server.use(express.json());
 const TableRoutes = require('./routes/Routes.js');
 server.use('/', TableRoutes);
 
-server.listen(3333, () => {
- console.log('API ONLINE');
+
+PORT = process.env.PORT || 8081
+server.listen(PORT, () => {
+    console.log("Servidor rodando")
 })
