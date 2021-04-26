@@ -28,11 +28,8 @@ function FindClient() {
           dispatch({ type: 'ADD_USER', 
           save: {userId: response.data.id, userName: response.data.name, 
             userPhone: response.data.phone, userCPF: response.data.cpf}})
-      
-          if (response.data == null) {
-            setMessageErr("Cliente não encontrado")
-          }
         }).catch(err => {
+          setMessageErr("Cliente não encontrado")
           console.log(err)
         })
     }

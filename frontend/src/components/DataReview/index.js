@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as S from './styles';
 import { useDispatch, useSelector } from 'react-redux';
+import Input from 'react-currency-format';
 
 //imagens
 import ArrowUp from '../../assets/arrowUp.svg';
@@ -22,6 +23,7 @@ function DataReview() {
 
 
     function validateValue(value) {
+        let teste = (value)
         if (valueDesired == null) {
             return
         }
@@ -64,17 +66,18 @@ function DataReview() {
         <S.Container>
             <S.Label className="table">Tabela
             <S.InputArrows>
-            <S.Input className="arrows" defaultValue={data.tableName} />
+            <S.Input className="arrows" defaultValue={data.tableName} disabled />
             <S.Arrows>
             <S.Arrow src={ArrowUp} />
             <S.Arrow src={ArrowDown} />
             </S.Arrows>
             </S.InputArrows>
             </S.Label>
-            <S.Label id="valueDesired">Valor desejado:<S.Input defaultValue={"R$ " + value}
-            onChange={validateValue(value), e => {
-            setValue(((e.target.value).split(" "))[1]); 
-            changeDesiredValue(((e.target.value).split(" "))[1])}} />
+            <S.Label id="valueDesired">Valor desejado:
+            <Input prefix="R$ " className="inputMoney" value={value}
+              onChange={validateValue(value), e => {
+                setValue((((e.target.value).split(" "))[1])); 
+                changeDesiredValue(((e.target.value).split(" "))[1])}} />
             </S.Label>
             <S.Label id="totalLoan">Valor Total do Empréstimo:<S.Input value={"R$ " + (filter == "actived" ? data.totalLoan : totalLoan)} disabled /></S.Label>
             <S.Label>Parcelas:

@@ -53,10 +53,23 @@ export const Label = styled.label`
         height: 50%;
         margin-right: 5px;
     }
+    .inputMoney{
+        width: 35%;
+        height: 70%;
+        margin: 0 10px 0 2px;
+        background-color: #FFFFFF;
+        border: none;
+        color: #EF9C4B;
+        font-weight: 600;
+        font-style: italic;
+        border-radius: 5px;
+        padding: 0 10px;
+        outline: none;
+
+    }
 
 `
 export const Input = styled.input`
-    appearance: textfield;
     width: 35%;
     height: 70%;
     margin: 0 10px 0 2px;

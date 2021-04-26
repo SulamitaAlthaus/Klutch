@@ -22,19 +22,19 @@ function Home() {
 
     if (value === undefined || value === "") {
       setMessageErr("O valor não pode ser nulo")
-      document.getElementById('teste').setAttribute("style", "border: 1px solid #FF0000")
+      document.getElementById('inputMoney').setAttribute("style", "border: 1px solid #FF0000")
     } else {
       //limpa o valor recebido, deixando apenas números.
       var validaValor = value.split('R$')[1].split(',').join('')
 
       if (validaValor < 300 || validaValor > 10000) {
         setMessageErr("O valor deve ser entre R$300 e R$10.000")
-        document.getElementById('teste').setAttribute("style", "border: 1px solid #FF0000")
+        document.getElementById('inputMoney').setAttribute("style", "border: 1px solid #FF0000")
       } else {
         setVisible(true)
         setValueLoan(validaValor)
         setMessageErr()
-        document.getElementById('teste').setAttribute("style", "border: none")
+        document.getElementById('inputMoney').setAttribute("style", "border: none")
       }
     }
   }
@@ -57,7 +57,7 @@ function Home() {
         <S.Content>
           <S.TextContent>Valor Desejado</S.TextContent>
           <S.Input>
-            <Input prefix="R$" className="inputMoney" id="teste" placeholder="R$ 0,00"
+            <Input prefix="R$" className="inputMoney" id="inputMoney" placeholder="R$ 0,00"
               thousandSeparator={true} onChange={e => setValue(e.target.value)} />
             <S.Button onClick={ValidaValor}>Calcular</S.Button>
           </S.Input>

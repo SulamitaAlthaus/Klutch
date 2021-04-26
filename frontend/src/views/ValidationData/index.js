@@ -46,12 +46,17 @@ function ValidationData() {
   }
 
   function saveTypeContract(value) {
+    document.getElementsByClassName("contract")[0].setAttribute("style", "background-color: #228A95; color: #FFFFFF");
+    document.getElementsByClassName("contract")[1].setAttribute("style", "background-color: #228A95; color: #FFFFFF");
+    
+
     setMessageErr(false)
     setFilter(true)
     dispatch({
       type: 'ADD_CONTRACT',
       saveTypeContract: { tipeContract: value }
     })
+    document.getElementById(value).setAttribute("style", "background-color: #FFFFFF; color: #228A95");
   }
 
 
@@ -67,8 +72,8 @@ function ValidationData() {
       </S.Content>
       <S.Text>Escolha o tipo de Contrato:</S.Text>{messageErr ? <S.MsgErr>Escolha o tipo de contrato</S.MsgErr> : null}
       <S.Buttons>
-        <S.Button className="contract" onClick={e => saveTypeContract("Automático")}>Automático</S.Button>
-        <S.Button className="contract" onClick={e => saveTypeContract("Manual")}>Manual</S.Button>
+        <S.Button className="contract" id="Automático" onClick={e => saveTypeContract("Automático")}>Automático</S.Button>
+        <S.Button className="contract" id="Manual" onClick={e => saveTypeContract("Manual")}>Manual</S.Button>
         <S.Button onClick={saveData}><S.Conclude />Concluir</S.Button>
       </S.Buttons>
       <S.Table>
